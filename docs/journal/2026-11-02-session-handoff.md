@@ -1,7 +1,7 @@
 ---
 title: "2026-11-02 — Documentation Bootstrap Handoff"
 type: handoff
-status: current
+status: historical
 date: 2026-11-02
 ---
 
@@ -33,3 +33,6 @@ Do not infer more canon than the creator approved. No gambling; the game is Indo
 
 ## Verification
 This is a documentation-only change; no playable prototype, automated game test or repo code implementation is claimed. Validate links and PR diff after write.
+
+## Later update (2026-11-02)
+This founding bootstrap handoff was superseded by the [hybrid control handoff](2026-11-02-handoff-control-model.md) after the creator accepted [ADR-0003](../decisions/ADR-0003-player-control.md). Earlier 'proposed' labels above remain an accurate snapshot of the bootstrap session, not current decision status.
