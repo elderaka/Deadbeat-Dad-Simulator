@@ -11,7 +11,7 @@ updated: 2026-11-02
 > **Status: PROPOSED** — Canonical = approved direction; Proposed = hypothesis to validate; Open = undecided. Numeric examples are not final balancing.
 
 ## Family is the progression, not a meter
-Proposed model: directly control Bapak; other household members are autonomous NPCs with jobs, school, ambitions, preferences and relationships. **Single-character control has not been explicitly locked by the creator.** See [ADR-0003](../decisions/ADR-0003-player-control.md).
+**Canonical control contract:** Bapak is the only directly controlled character. Other household members have autonomous schedules and independent agency; the player coordinates through requests, conversations, agreed routines and a household planner. See accepted [ADR-0003](../decisions/ADR-0003-player-control.md) and [Household Control §13](13-household-control.md). The NPC-state model and details below remain **proposed**, not canonized.
 
 ### NPC state
 - Stable traits: ambition, sociability, interests, independence

@@ -13,6 +13,7 @@ updated: 2026-11-02
 - [Game Design Document](gdd/index.md) — structured game design, section by section
 - [Decision Records](decisions/index.md) — accepted and proposed architecture/design decisions
 - [Open Questions](gdd/12-open-questions.md) — decisions awaiting the creator or playtest
+- [Household Control Model](gdd/13-household-control.md) — Bapak-only direct control and indirect coordination
 - [Roadmap](roadmap/index.md) — implementation and MVP boundaries
 - [Journal](journal/index.md) — chronological brainstorms, work logs, and handoffs
 - [Agent Protocol](agents/index.md) — how agents maintain context across compaction/delegation

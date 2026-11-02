@@ -27,7 +27,7 @@ Review household finances, family aspirations, school/work milestones, recurring
 Housing and transport improvement → more reliable routines → household resilience → family growth and independent careers → income-producing investments → leisure with purpose and optional retirement.
 
 ## Core action grammar
-**Inspect obligation → choose action/delegation → spend time/resources → observe outcome → learn/update plan.** Combine with active leisure minigames.
+**Inspect obligation → choose Bapak action or propose coordination → secure agreement where required → spend time/resources → observe outcome → learn/update plan.** Combine with active leisure minigames. The direct-Bapak + indirect-household control split is canonized in [ADR-0003](../decisions/ADR-0003-player-control.md); the exact planner, requests and task lifecycle are [proposed](13-household-control.md).
 
 ## Tension
 Each day has finite time; competing events may require trade-offs. Not all important family attention can be bought or delegated. Disruption should be occasional and readable, not relentless or arbitrary.

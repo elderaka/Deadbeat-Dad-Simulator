@@ -18,6 +18,9 @@ Distinguish:
 - **Meaningful commitments:** relationships, school meetings, promises and emergencies; some require Bapak's presence.
 - **Opportunities:** fishing, family outings, side ventures, hobbies, exploration and neighborhood events.
 
+## Delegation boundary (canonical)
+Bapak can propose and negotiate household arrangements but cannot remotely force family members to act. Requests are different from confirmed agreements; the household planner records obligations, capacities, and agreed coverage. See [ADR-0003](../decisions/ADR-0003-player-control.md) and [Household Control §13](13-household-control.md). Implementation details below remain proposals.
+
 ## Responsibility objects (candidate data model)
 Each responsibility has: owner, recurrence, due window, time cost, cash cost, reliability requirement, people affected, solution options and escalation rules. Example: **School pickup** can be completed manually, delegated to a trusted transport provider for a fee, or missed with relationship/logistics consequences.
 

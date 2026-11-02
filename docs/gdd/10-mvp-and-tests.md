@@ -20,6 +20,7 @@ Validate whether **eliminating chores while maintaining a lively household is fu
 - Simplified morning drop-off and evening pickup.
 - Fishing minigame, fish selling and a few variants.
 - A responsibility board with 3–5 durable convenience solutions.
+- Reflect the accepted control split: only Bapak moves directly; other characters are approached through requests/agreements and a planning surface. A minimal test needs one request that cannot be fulfilled because of a visible schedule conflict and one viable alternative.
 - 6–10 contextual events and a weekly household report.
 - One weekly goal: visibly improve a morning routine.
 

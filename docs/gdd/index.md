@@ -24,5 +24,6 @@ Each subject lives in one file; link instead of duplicating authoritative defini
 | [10](10-mvp-and-tests.md) | Vertical slice, validation questions | Proposed |
 | [11](11-platform-and-multiplayer.md) | Deployment and later multiplayer | Mixed |
 | [12](12-open-questions.md) | Questions requiring creator input | Open |
+| [13](13-household-control.md) | Direct Bapak control, indirect household coordination | Canonical architecture, proposed mechanics |
 
 For design authority see [Decision Records](../decisions/index.md); for what happened in a session see [Journal](../journal/index.md).

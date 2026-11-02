@@ -13,7 +13,7 @@ These records distinguish **approved choices** from ideas for future discussion.
 |---|---|---|
 | [0001](ADR-0001-primary-fantasy.md) | The Art of Doing Absolutely Nothing | Accepted |
 | [0002](ADR-0002-multiplayer-roadmap.md) | Multiplayer deferred from MVP | Accepted |
-| [0003](ADR-0003-player-control.md) | Bapak-only direct control | Proposed |
+| [0003](ADR-0003-player-control.md) | Bapak direct control + indirect household coordination | Accepted |
 | [0004](ADR-0004-time-as-reward.md) | Discretionary time as progression currency | Proposed derivation |
 
 ## Recording a new decision
