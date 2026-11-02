@@ -63,7 +63,7 @@ function createHouseFBX(){
   roofpanel("19_Roof_Right_Removable",[0,3.73],[1.96,2.87]);
   const p=(t,v)=>({t,v}),S=x=>p("S",x),I=x=>p("I",x),L=x=>p("L",x),F=x=>p("D",x),A=(t,v)=>p(t,v);
   const n=(name,props=[],children=[])=>({name,props,children});
-  function prop(name,typ,sub,flags,...vals){return n("P",[S(name),S(typ),S(sub),S(flags),...vals.map(x=>Number.isInteger(x)?I(x):F(x))])}
+  function prop(name,typ,sub,flags,...vals){return n("P",[S(name),S(typ),S(sub),S(flags),...vals.map(x=>typ==="int"?I(x):F(x))])}
   function ascii(s){const b=[];for(let i=0;i<s.length;i++)b.push(s.charCodeAt(i)&255);return b}
   function u32(x){let a=new Uint8Array(4);new DataView(a.buffer).setUint32(0,x,true);return [...a]}
   function i32(x){let a=new Uint8Array(4);new DataView(a.buffer).setInt32(0,x,true);return [...a]}
@@ -147,7 +147,7 @@ function createHouseFBX(){
         prop("Lcl Scaling","Lcl Scaling","","A",1.0,1.0,1.0),
         prop("Visibility","Visibility","","A",1.0)
       ]),
-      n("Shading",[S("Y")]),n("Culling",[S("CullingOff")])
+      n("Shading",[p("C",true)]),n("Culling",[S("CullingOff")])
     ]));
     links.push(n("C",[S("OO"),L(geomId),L(modelId)]),
                n("C",[S("OO"),L(modelId),L(0)]),
