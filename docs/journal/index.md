@@ -13,7 +13,8 @@ This is a durable, versioned scratchpad for brainstorming, experiments, multi-ag
 - [Foundation Brainstorm](2026-11-02-brainstorm.md) — original idea, choices, why the chosen hook matters
 - [Session Handoff](2026-11-02-session-handoff.md) — original documentation bootstrap (historical handoff)
 - [Household Control Brainstorm](2026-11-02-household-control.md) — accepted hybrid choice, proposed mechanics
-- [Hybrid Control Handoff](2026-11-02-handoff-control-model.md) — latest agent handoff for control decision
+- [Hybrid Control Handoff](2026-11-02-handoff-control-model.md) — previous agent handoff (historical)
+- [Rumah 3 Petak Asset Work](2026-11-02-house-blockout.md) — accepted scale, preserved denah doors, FBX generation and limitations
 
 ## Create new journals
 Use:

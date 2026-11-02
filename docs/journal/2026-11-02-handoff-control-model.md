@@ -1,7 +1,7 @@
 ---
 title: "2026-11-02 — Hybrid Control Handoff"
 type: handoff
-status: current
+status: historical
 date: 2026-11-02
 ---
 
@@ -27,3 +27,6 @@ Prototype Bapak's first school run and a choice between do-it-yourself, asking a
 
 ## Verification
 Documentation-only edits. Review PR diff for proper paths and approved status; no gameplay tests claimed.
+
+## Subsequent update (2026-11-02)
+The [starter house asset work log](2026-11-02-house-blockout.md) is the latest dated journal. The earlier hybrid control handoff remains relevant but is no longer the newest project activity.

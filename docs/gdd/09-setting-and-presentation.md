@@ -18,6 +18,9 @@ A recognizable Indonesian industrial suburb inspired by the Cikarang–Karawang�
 ## Candidate minimum map
 Starter house / kontrakan, school, factory entrance, warung, fishing pond, road connections and a neighbor. Compact navigable neighborhood beats a huge empty open world.
 
+## Approved starter house graybox
+The creator accepted **1 unit = 1 meter**, **Bapak = 1.65 m**, and a **3.5 × 9 m three-bay starter kontrakan**. The doorway layout must match the drawn denah: centered exterior entry, right-offset living/bedroom doorway, near-centered bedroom/kitchen doorway. See [ADR-0005](../decisions/ADR-0005-starter-house-layout.md) and [asset layout](../../Assets/House/layout.json). The extra bathroom access opening is provisional because its location was not indicated in the reference diagram.
+
 ## Camera
 Isometric household management is attractive because schedules, family autonomy and upgrades are legible. A close third-person or first-person camera would heighten comedic immersion but raises animation, UI and movement complexity.
 

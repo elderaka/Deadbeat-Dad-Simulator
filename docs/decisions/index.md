@@ -15,6 +15,7 @@ These records distinguish **approved choices** from ideas for future discussion.
 | [0002](ADR-0002-multiplayer-roadmap.md) | Multiplayer deferred from MVP | Accepted |
 | [0003](ADR-0003-player-control.md) | Bapak direct control + indirect household coordination | Accepted |
 | [0004](ADR-0004-time-as-reward.md) | Discretionary time as progression currency | Proposed derivation |
+| [0005](ADR-0005-starter-house-layout.md) | 1.65m Bapak and 3.5×9m denah-aligned starter house | Accepted |
 
 ## Recording a new decision
 1. State context and alternatives.
