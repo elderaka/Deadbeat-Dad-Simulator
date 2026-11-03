@@ -16,6 +16,9 @@ This is a durable, versioned scratchpad for brainstorming, experiments, multi-ag
 - [Hybrid Control Handoff](2026-11-02-handoff-control-model.md) — previous agent handoff (historical)
 - [Rumah 3 Petak Asset Work](2026-11-02-house-blockout.md) — accepted scale, preserved denah doors, FBX generation and limitations
 
+## 2026-11-03
+- [Five-Unit Kontrakan Complex](2026-11-03-kontrakan-complex.md) — graybox construction, dimension correction, and Unity validation needed
+
 ## Create new journals
 Use:
 - **YYYY-MM-DD-brainstorm-topic.md** for exploratory discussions

@@ -21,6 +21,9 @@ Starter house / kontrakan, school, factory entrance, warung, fishing pond, road 
 ## Approved starter house graybox
 The creator accepted **1 unit = 1 meter**, **Bapak = 1.65 m**, and a **3.5 × 9 m three-bay starter kontrakan**. The doorway layout must match the drawn denah: centered exterior entry, right-offset living/bedroom doorway, near-centered bedroom/kitchen doorway. See [ADR-0005](../decisions/ADR-0005-starter-house-layout.md) and [asset layout](../../Assets/House/layout.json). The extra bathroom access opening is provisional because its location was not indicated in the reference diagram.
 
+## Proposed five-unit kontrakan compound
+The creator liked a five-door row-house courtyard environment as Bapak's starting neighborhood. A first-pass [five-unit graybox](14-kontrakan-complex.md) repeats the accepted 3.5×9m house modules while preserving their denah door offsets. The proposed **19.5×17m compound** corrects inconsistent site measurements in the generated concept image. This compound layout is not yet an accepted ADR.
+
 ## Camera
 Isometric household management is attractive because schedules, family autonomy and upgrades are legible. A close third-person or first-person camera would heighten comedic immersion but raises animation, UI and movement complexity.
 

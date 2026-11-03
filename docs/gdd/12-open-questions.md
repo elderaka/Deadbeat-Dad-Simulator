@@ -21,6 +21,7 @@ Avoid promoting proposals without explicit user agreement. Prioritize high-impac
 | Q-009 | What is the intended audience and language? | UX, humor, store positioning | Indonesian-first flavor, undecided |
 | Q-010 | Calendar speed, session target and game economy? | Balance, pacing | 12–15 min/day candidate |
 | Q-011 | Exact bathroom doorway position in 3-petak denah? | Asset fidelity, bathroom access | Temporary opening at X +1.05 / Z 7 |
+| Q-012 | Approve the 5-unit compound and 19.5×17m site as the starter neighborhood? | Level scope and navigation | Proposed 5-door shared court; needs playtest |
 
 ## Resolved decisions
 - **Starter house scale/denah — Resolved 2026-11-02:** 1.65m Bapak, 3.5×9m house and door alignment accepted ([ADR-0005](../decisions/ADR-0005-starter-house-layout.md)). Bathroom access (Q-011) remains a layout assumption.
