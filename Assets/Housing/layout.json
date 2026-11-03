@@ -1,0 +1,103 @@
+{
+  "name": "kontrakan-row-5-v01",
+  "phase": "PROPOSED GRAYBOX",
+  "coordinateSystem": "Y-up, X horizontal, Z toward rear",
+  "unityUnits": "1 unit = 1 meter",
+  "bapakHeight": 1.65,
+  "complex": {
+    "width": 19.5,
+    "depth": 17,
+    "xBounds": [
+      -9.75,
+      9.75
+    ],
+    "zBounds": [
+      -6.5,
+      10.5
+    ],
+    "gatedOpening": 3.2
+  },
+  "units": [
+    {
+      "name": "U01",
+      "centerX": -7,
+      "width": 3.5,
+      "bodyDepth": 9,
+      "terraceDepth": 1.2,
+      "playerHome": true
+    },
+    {
+      "name": "U02",
+      "centerX": -3.5,
+      "width": 3.5,
+      "bodyDepth": 9,
+      "terraceDepth": 1.2,
+      "playerHome": false
+    },
+    {
+      "name": "U03",
+      "centerX": 0,
+      "width": 3.5,
+      "bodyDepth": 9,
+      "terraceDepth": 1.2,
+      "playerHome": false
+    },
+    {
+      "name": "U04",
+      "centerX": 3.5,
+      "width": 3.5,
+      "bodyDepth": 9,
+      "terraceDepth": 1.2,
+      "playerHome": false
+    },
+    {
+      "name": "U05",
+      "centerX": 7,
+      "width": 3.5,
+      "bodyDepth": 9,
+      "terraceDepth": 1.2,
+      "playerHome": false
+    }
+  ],
+  "repeatedDoors": {
+    "front": {
+      "localX": 0,
+      "z": 0,
+      "width": 0.9
+    },
+    "livingToBedroom": {
+      "localX": 0.76,
+      "z": 3,
+      "width": 0.85
+    },
+    "bedroomToKitchen": {
+      "localX": -0.055,
+      "z": 6,
+      "width": 0.85
+    },
+    "bathroom": {
+      "localX": 1.05,
+      "z": 7,
+      "width": 0.7,
+      "status": "provisional"
+    }
+  },
+  "shared": {
+    "courtyard": {
+      "zStart": -6.5,
+      "zEnd": -1.2,
+      "depth": 5.3
+    },
+    "rearService": {
+      "zStart": 9,
+      "zEnd": 10.5,
+      "depth": 1.5
+    },
+    "sideWalkwayWidth": 1,
+    "roofMeshes": [
+      "Roof_Front_Removable",
+      "Roof_Rear_Removable"
+    ]
+  },
+  "rationale": "Concept image 18×14.5 m does not fit separate 9m body +1.2m terrace +4m court +1.5m rear strip; this is a revised 19.5×17m graybox keeping the accepted unit layout unchanged."
+}

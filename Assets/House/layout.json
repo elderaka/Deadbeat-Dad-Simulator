@@ -1,0 +1,81 @@
+{
+  "name": "rumah-3-petak-v01",
+  "units": "meters",
+  "axis": "Y-up",
+  "house": {
+    "width": 3.5,
+    "depth": 9,
+    "height": 2.8,
+    "frontZ": 0,
+    "rearZ": 9,
+    "terraceDepth": 1.2,
+    "wallThickness": 0.15,
+    "interiorWallThickness": 0.1
+  },
+  "characterReferenceHeight": 1.65,
+  "rooms": [
+    {
+      "id": "living",
+      "zMin": 0,
+      "zMax": 3
+    },
+    {
+      "id": "bedroom",
+      "zMin": 3,
+      "zMax": 6
+    },
+    {
+      "id": "kitchen",
+      "zMin": 6,
+      "zMax": 9
+    },
+    {
+      "id": "bathroom",
+      "xMin": 0.35,
+      "xMax": 1.75,
+      "zMin": 7,
+      "zMax": 9
+    }
+  ],
+  "doorways": [
+    {
+      "id": "main-entrance",
+      "wallZ": 0,
+      "centerX": 0,
+      "width": 0.9,
+      "height": 2.1,
+      "source": "denah centered front"
+    },
+    {
+      "id": "living-to-bedroom",
+      "wallZ": 3,
+      "centerX": 0.76,
+      "width": 0.85,
+      "height": 2.1,
+      "source": "denah right offset"
+    },
+    {
+      "id": "bedroom-to-kitchen",
+      "wallZ": 6,
+      "centerX": -0.055,
+      "width": 0.85,
+      "height": 2.1,
+      "source": "denah near center"
+    },
+    {
+      "id": "bathroom-access",
+      "wallZ": 7,
+      "centerX": 1.05,
+      "width": 0.7,
+      "height": 2.1,
+      "source": "functional addition: not shown on diagram"
+    }
+  ],
+  "roof": {
+    "type": "gable",
+    "removableMeshes": [
+      "18_Roof_Left_Removable",
+      "19_Roof_Right_Removable"
+    ]
+  }
+}
