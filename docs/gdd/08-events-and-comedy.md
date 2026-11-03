@@ -25,6 +25,9 @@ Event ID; prerequisites; trigger window; participants; conflict; 2–4 choices; 
 - **Strike! Lah, sandal:** A strange catch becomes a souvenir.
 - **Anak ingin masuk universitas:** A child's goal changes the household savings plan.
 
+## Social vulnerability and opportunistic offers
+Certain neighbors may learn of Bapak's financial distress through events, overheard information or visible asset sales, then propose buying his belongings well below market value. Other neighbors may act fairly or supportively. The hidden financial-pressure / awareness mechanic and player agency are described in [Risk Economy §15](15-risk-economy-and-neighbor-exploitation.md) and [ADR-0006](../decisions/ADR-0006-risk-economy-social-exploitation.md). Don't make NPCs magically know private transactions or force the player to accept an offer.
+
 ## Fairness
 Events must be forecastable enough to support strategy. High-stakes surprises need warnings or recovery paths. Let players learn why an event occurred. Use callback events sparingly to make choices feel remembered.
 

@@ -25,6 +25,9 @@ Recurring expenses: food, utilities, transport, education, housing and optional 
 ## Design constraint: every serious purchase has a verb
 A bigger home should enable an activity or capacity, not merely make the asset counter larger. A better vehicle changes scheduling capacity, speed or reliability, not just its sprite.
 
+## Risky financial shortcuts (accepted direction)
+Players may voluntarily enter fictional high-cost **pinjol** loans or simulated **judol** gambling, both deliberately unattractive long-term strategies. Their liabilities, transaction history and potential asset losses feed into a hidden pressure/neighbor-awareness system and can trigger opportunistic lowball purchase offers. Serious consequences can include housing loss and divorce. Exact 80% RTP proposal, lending terms and encounter probabilities are **not final**; see [GDD Section 15](15-risk-economy-and-neighbor-exploitation.md) and accepted [ADR-0006](../decisions/ADR-0006-risk-economy-social-exploitation.md).
+
 ## Economic balancing principles
 - Family size increases cost, logistics and narrative variety, never automatically profit.
 - Wage income must reflect work time and constraints.
