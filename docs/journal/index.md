@@ -19,6 +19,9 @@ This is a durable, versioned scratchpad for brainstorming, experiments, multi-ag
 ## 2026-11-03
 - [Five-Unit Kontrakan Complex](2026-11-03-kontrakan-complex.md) — graybox construction, dimension correction, and Unity validation needed
 
+## 2026-11-05
+- [Unity Initialization](2026-11-05-unity-initialization.md) — approved setup, first-person blockout, tooling and validation.
+
 ## Create new journals
 Use:
 - **YYYY-MM-DD-brainstorm-topic.md** for exploratory discussions

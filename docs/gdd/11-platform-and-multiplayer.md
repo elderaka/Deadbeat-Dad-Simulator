@@ -14,7 +14,7 @@ updated: 2026-11-02
 **Multiplayer is explicitly future roadmap, not MVP.** See [ADR-0002](../decisions/ADR-0002-multiplayer-roadmap.md).
 
 ## Candidate platforms
-Unity standalone on Steam and potentially Android; Roblox considered for a separate social-first variant. No definitive engine/platform/shipping commitment has been made for this repository. Team assets and programming are self-produced for planning purposes; publication and hosting costs are external.
+**Accepted 2026-11-05:** Unity with Windows and Android compatibility; Indonesian first, English also intended ([ADR-0006](../decisions/ADR-0006-unity-prototype-foundation.md)). Store publication, audience details and release dates remain open. Roblox was a historical candidate, not the current implementation target. Publication and hosting costs are external.
 
 ## Later multiplayer fantasy
 Small lobby of Bapak players: fishing together, chatting, neighborhood visits, local contests and social chaos. The main household loop must work offline first. Persist personal household progress separately from ephemeral lobby interactions.
