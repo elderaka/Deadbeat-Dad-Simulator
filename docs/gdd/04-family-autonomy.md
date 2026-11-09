@@ -31,6 +31,9 @@ Additional children may increase complexity, costs and opportunities for stories
 ## Example consequence chain
 Child asks Bapak to attend a school performance overlapping a fishing tournament. Attending may strengthen their bond; choosing the competition may disappoint them; arranging a substitute may work depending on work schedules. **No single choice should deterministically decide a child's future.** Long-term relationships depend on repeated patterns.
 
+## Severe player-driven consequences (accepted direction)
+Persistent harmful choices and financial strain can contribute to **separation/divorce**, and the household can lose its home; this is possible, not an automatic invisible-meter threshold. Ibu keeps independent agency and believable dialogue. The post-divorce **full-fishing sandbox** path is an accepted ironic outcome; details involving children and living arrangements remain open. See [Risk Economy §15](15-risk-economy-and-neighbor-exploitation.md) and [ADR-0006](../decisions/ADR-0006-risk-economy-social-exploitation.md).
+
 ## MVP candidate
 One spouse, one child; simple schedules, few traits, two or three meaningful family events and transparent causes for relationship changes. Example names Adit/Pak Ujang are placeholders, not lore canon.
 

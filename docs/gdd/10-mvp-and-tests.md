@@ -32,6 +32,9 @@ Ask: (1) Did the player understand the trade-off? (2) Did they feel smart about 
 ## Constraints
 No advanced generations, procedural town, online lobbies, big city, full driving physics, complicated AI, or paid online backend in the first test. Art polish is not needed for this design validation.
 
+## Explicitly deferred risk systems
+The optional pinjol/judol, hidden NPC financial knowledge, asset lowballing, loss of home and divorce-to-fishing-sandbox path are accepted as **longer-term design direction**, but **not part of the initial two-day or seven-day vertical slice**. They need their own prototype and consequence/fairness review after the base household loop works. See [Risk Economy §15](15-risk-economy-and-neighbor-exploitation.md).
+
 ## Pass/fail indicators (initial hypotheses)
 - Players articulate the objective as "improve life to reclaim time."
 - They notice at least one causal consequence of past decisions.
