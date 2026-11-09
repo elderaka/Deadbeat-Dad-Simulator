@@ -22,6 +22,9 @@ Immediate: bite tension, catch animation, personal best. Mid-term: equipment, ne
 ## Anti-grind
 Make daily fishing optional. Earnings from fishing should not trivially dominate every other strategy, or players will have no reason to invest in logistics/social systems. Avoid paid randomized loot or gambling mechanisms.
 
+## Divorce-to-fishing sandbox route (accepted direction)
+The creator wants possible household collapse/divorce to unlock or transition into an ironic **full-fishing sandbox**. This is a consequence branch, not a required route to access enjoyable leisure, and its implementation is not yet specified. See [Risk Economy §15](15-risk-economy-and-neighbor-exploitation.md). The regular household-centered fishing loop remains intact.
+
 ## Leisure beyond fishing
 Warung kopi gossip, visiting neighbors, family outings, small repair jobs, local events and other hobbies can compete for reclaimed hours. Ideally other activities improve the management game through relationships or opportunities.
 

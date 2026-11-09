@@ -18,6 +18,7 @@ This is a durable, versioned scratchpad for brainstorming, experiments, multi-ag
 
 ## 2026-11-03
 - [Five-Unit Kontrakan Complex](2026-11-03-kontrakan-complex.md) — graybox construction, dimension correction, and Unity validation needed
+- [Risk Economy and Neighbor Opportunism](2026-11-03-risk-economy-brainstorm.md) — accepted direction, proposed values, and context-safe handoff
 
 ## 2026-11-05
 - [Unity Initialization](2026-11-05-unity-initialization.md) — approved setup, first-person blockout, tooling and validation.

@@ -36,6 +36,9 @@ These aren't required family-size milestones. A one-child household is a valid s
 ## Chronicle
 A proposed family album records meaningful events (first catch together, house purchase, graduation, work promotion). Strong retention comes from *remembering what happened in this save* rather than completing a universal checklist.
 
+## Alternate outcome: Bapak Merdeka (accepted concept)
+A player who makes sufficiently damaging decisions may lose housing and marriage, and **continue in full-fishing sandbox mode**. The joke is that unrestricted leisure is achieved by losing the household that originally gave it meaning. Exact conditions, custody/residence and any alternate access path are undecided; it is not an optimal or obligatory progression objective. See [Risk Economy §15](15-risk-economy-and-neighbor-exploitation.md).
+
 ## Endgame design question
 Full automation risks boredom. Preserve voluntary goals: festivals, family trips, rare fishing challenges, neighbor projects, improving the neighborhood and self-directed hobbies. **Optimize away obligation, not opportunity.**
 
