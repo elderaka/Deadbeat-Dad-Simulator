@@ -94,7 +94,7 @@ Ask testers:
 
 ## 9. Still open
 
-- Q-002 camera (isometric / third person / switching) and exact platform controls.
+- Camera is now first person; Windows/Android compatibility is accepted ([ADR-0006](../decisions/ADR-0006-unity-prototype-foundation.md)). Detailed interaction bindings remain open beyond prototype walking/look.
 - Planner format (phone vs in-world board vs both).
 - How many recurring agreements may be active and their failure rate.
 - NPC decision algorithm and how much of it to expose.

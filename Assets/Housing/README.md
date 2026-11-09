@@ -28,3 +28,5 @@ The generated concept drawing labels **18 × 14.5m**, but 9m rooms + 1.2m terrac
 In Unity, place under `Assets/Housing/`; import at scale 1, verify a 1.65m capsule and 2.1m door openings; remove roof panels for cutaway views. Create colliders/navmesh separately—do not apply one compound mesh collider blindly.
 
 **Limitations:** no interactive door leaves, no finished textures/UVs, no modeled scooters, no animated NPCs, no tested Unity Editor import. This graybox includes *functional placeholder* props and does not yet add detailed facade windows. Separate party walls are modeled once rather than double-stacking walls.
+
+**2026-11-05 update:** Fixed FBX checksum/coordinate serialization after actual Unity import failed. The regenerated compound imports in Unity 6000.4.4f1 at the source layout coordinates. The walkable scene passes all fifteen primary doorway checks, floor/wall collision checks and character scale checks. Manual walkthrough remains deferred; see the [initialization handoff](../../docs/journal/2026-11-05-unity-initialization.md).

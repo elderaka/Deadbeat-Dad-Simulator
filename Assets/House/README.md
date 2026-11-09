@@ -32,3 +32,5 @@ Copy/retain these under the Unity project's **Assets/House/** directory. Drag th
 The two `*_Roof_*_Removable` meshes are distinct and can be disabled for isometric or interior views. Rooms and doors are **openings and frames only**—there are no dynamic door leaves or colliders yet. Generate physics colliders / NavMesh in Unity; do not add a single mesh collider that blocks passageways.
 
 **Validation caveat:** Geometry dimensions and format are programmatically constructed. Unity import has not been tested in the editor. This is a first-pass graybox (no furniture, windows, interactive doors, UV texturing or detailed roof structure).
+
+**2026-11-05 update:** Unity 6000.4.4f1 import exposed FBX checksum and coordinate metadata errors. The generator and asset were corrected; source dimensions and door offsets are preserved. Run both generators, then `node tools/check-fbx.mjs`. See the [Unity initialization handoff](../../docs/journal/2026-11-05-unity-initialization.md) for current validation; the caveat above describes the original asset state.

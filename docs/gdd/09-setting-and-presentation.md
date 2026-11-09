@@ -27,7 +27,7 @@ The creator liked a five-door row-house courtyard environment as Bapak's startin
 ## Camera
 Isometric household management is attractive because schedules, family autonomy and upgrades are legible. A close third-person or first-person camera would heighten comedic immersion but raises animation, UI and movement complexity.
 
-**No definitive camera choice has been approved.** Proposed compromise: isometric/3D scene with optional closer framing for minigames, validated in prototype.
+**Update 2026-11-05:** The creator selected first person for immersion ([ADR-0006](../decisions/ADR-0006-unity-prototype-foundation.md)). The isometric discussion above is historical rationale, not current camera direction.
 
 ## Presentation
 Warm, approachable, lived-in, mildly ridiculous, not cyberpunk or generic tropical tourism imagery. Key feedback: clock, cash buffer, pending obligations, who is where, what automation changed and what family milestones occurred.

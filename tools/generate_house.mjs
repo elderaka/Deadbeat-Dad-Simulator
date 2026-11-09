@@ -71,6 +71,7 @@ function createHouseFBX(){
   function f64(x){let a=new Uint8Array(8);new DataView(a.buffer).setFloat64(0,x,true);return [...a]}
   function pack(q){
     const {t,v}=q;
+    if(t==="R")return [82,...u32(v.length),...v];
     if(t==="S"){let b=ascii(v);return [83,...u32(b.length),...b]}
     if(t==="I")return [73,...i32(v)];
     if(t==="L")return [76,...i64(v)];
@@ -87,7 +88,7 @@ function createHouseFBX(){
     let end=start+13+name.length+properties.length;
     const kids=[];
     for(const child of node.children){let packed=nodeBytes(child,end);kids.push(...packed);end+=packed.length}
-    if(node.children.length){kids.push(...new Array(13).fill(0));end+=13}
+    if(node.children.length || !node.props.length){kids.push(...new Array(13).fill(0));end+=13}
     return [...u32(end),...u32(node.props.length),...u32(properties.length),name.length,...name,...properties,...kids]
   }
   const objects=[],links=[],materialIds={},names=Object.keys(groups);let nextId=1000000;
@@ -115,17 +116,18 @@ function createHouseFBX(){
       const magnitude=Math.hypot(...cross)||1;
       const normal=cross.map(q=>q/magnitude);
       normals.push(...normal,...normal,...normal);
-      poly.push(f[0],f[1],-f[2]-1);
+      poly.push(f[0],f[2],-f[1]-1);
     }
     objects.push(n("Geometry",[L(geomId),S("Geometry::"+name+"\x00\x01Geometry"),S("Mesh")],[
       n("GeometryVersion",[I(124)]),
-      n("Vertices",[A("d",g.verts)]),
+      // FBX is right-handed; Unity's importer mirrors X back to the source layout.
+      n("Vertices",[A("d",g.verts.map((v,i)=>i%3===0?-v:v))]),
       n("PolygonVertexIndex",[A("i",poly)]),
       n("LayerElementNormal",[I(0)],[
         n("Version",[I(101)]),n("Name",[S("")]),
         n("MappingInformationType",[S("ByPolygonVertex")]),
         n("ReferenceInformationType",[S("Direct")]),
-        n("Normals",[A("d",normals)])
+        n("Normals",[A("d",normals.map((v,i)=>i%3===0?-v:v))])
       ]),
       n("LayerElementMaterial",[I(0)],[
         n("Version",[I(101)]),n("Name",[S("")]),
@@ -157,7 +159,7 @@ function createHouseFBX(){
     n("Version",[I(1000)]),
     n("Properties70",[],[
       prop("UpAxis","int","Integer","",1),prop("UpAxisSign","int","Integer","",1),
-      prop("FrontAxis","int","Integer","",2),prop("FrontAxisSign","int","Integer","",-1),
+      prop("FrontAxis","int","Integer","",2),prop("FrontAxisSign","int","Integer","",1),
       prop("CoordAxis","int","Integer","",0),prop("CoordAxisSign","int","Integer","",1),
       prop("UnitScaleFactor","double","Number","",100.0),
       prop("OriginalUnitScaleFactor","double","Number","",100.0)
@@ -170,6 +172,9 @@ function createHouseFBX(){
       n("EncryptionType",[I(0)]),
       n("Creator",[S("Bapak Simulator procedural blockout generator")])
     ]),
+    // Fixed timestamp, file ID and footer ID must agree for the FBX SDK checksum.
+    n("FileId",[p("R",[0x28,0xb3,0x2a,0xeb,0xb6,0x24,0xcc,0xc2,0xbf,0xc8,0xb0,0x2a,0xa9,0x2b,0xfc,0xf1])]),
+    n("CreationTime",[S("1970-01-01 10:00:00:000")]),
     setting,
     n("Documents",[],[n("Count",[I(1)]),
       n("Document",[L(sceneId),S("Scene"),S("Scene")],[n("Properties70"),n("RootNode",[L(0)])])]),
@@ -186,6 +191,7 @@ function createHouseFBX(){
   for(const item of nodes)out.push(...nodeBytes(item,out.length));
   out.push(...new Array(13).fill(0));
   out.push(...[0xfa,0xbc,0xab,0x09,0xd0,0xc8,0xd4,0x66,0xb1,0x76,0xfb,0x83,0x1c,0xf7,0x26,0x7e]);
+  out.push(...new Array((16-out.length%16)%16).fill(0));
   out.push(...u32(0),...u32(7400),...new Array(120).fill(0));
   out.push(...[0xf8,0x5a,0x8c,0x6a,0xde,0xf5,0xd9,0x7e,0xec,0xe9,0x0c,0xe3,0x75,0x8f,0x29,0x0b]);
   return {bytes:new Uint8Array(out),meshes:names.length,triangles:triangleCount,doors:{front,lounge,bedroom,bath}};

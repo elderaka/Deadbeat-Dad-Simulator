@@ -9,6 +9,10 @@ updated: 2026-11-02
 
 **Stage 0 — Canon:** Documentation foundation, ADRs, owner review and unanswered choices.
 
+**Approved first technical milestone:** First-person walkable house compound on Unity, with Windows/Android compatibility ([ADR-0006](../decisions/ADR-0006-unity-prototype-foundation.md)). Transport and fishing remain provisional gameplay directions for the next planning session.
+
+**TODO — Android build tools:** Deferred by the creator on 2026-11-05 because storage is limited. Install Android Build Support/SDK/NDK/Java only when requested, then build and test on a physical device. Touch support in code does not establish device compatibility.
+
 **Stage 1 — Two-Day Loop:** Paper prototype and playable day-one obligations; day-two convenience upgrade shows a clear reduction in work with an economic trade-off. [Vertical Slice](vertical-slice.md)
 
 **Stage 2 — Seven-Day Slice:** One family, neighborhood map, fishing minigame, schedule, financial cycle, upgrades, contextual events and weekly results.

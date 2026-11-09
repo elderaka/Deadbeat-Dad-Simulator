@@ -16,6 +16,7 @@ These records distinguish **approved choices** from ideas for future discussion.
 | [0003](ADR-0003-player-control.md) | Bapak direct control + indirect household coordination | Accepted |
 | [0004](ADR-0004-time-as-reward.md) | Discretionary time as progression currency | Proposed derivation |
 | [0005](ADR-0005-starter-house-layout.md) | 1.65m Bapak and 3.5×9m denah-aligned starter house | Accepted |
+| [0006](ADR-0006-unity-prototype-foundation.md) | Unity, first person, Windows/Android, initial walkable blockout | Accepted |
 | [0006](ADR-0006-risk-economy-social-exploitation.md) | Risky financial shortcuts, hidden vulnerability and opportunistic neighbors | Accepted intent |
 
 ## Recording a new decision
