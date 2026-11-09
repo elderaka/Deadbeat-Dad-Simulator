@@ -21,6 +21,7 @@ This is a durable, versioned scratchpad for brainstorming, experiments, multi-ag
 
 ## 2026-11-05
 - [Unity Initialization](2026-11-05-unity-initialization.md) — approved setup, first-person blockout, tooling and validation.
+- [Project Verification and Risk PR Reconciliation](2026-11-05-project-verification.md) — fresh checks, validation caveat, PR #2 authority conflicts and documentation-only next steps.
 
 ## Create new journals
 Use:
