@@ -1,6 +1,7 @@
 // Run after both generators: node tools/check-fbx.mjs
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
+import {checkKontrakanOverlaps} from './check-fbx-overlaps.mjs';
 
 for (const path of ['Assets/House/rumah-3-petak-v01.fbx', 'Assets/Housing/kontrakan-row-5-v01.fbx']) {
   const bytes = readFileSync(path);
@@ -24,4 +25,6 @@ for (const path of ['Assets/House/rumah-3-petak-v01.fbx', 'Assets/Housing/kontra
   assert.equal((bytes.length - 144) % 16, 0, 'Footer must be aligned');
   assert.equal(bytes.readUInt32LE(bytes.length - 140), 7400);
   console.log('FBX_CHECK_PASSED:', path);
+  if (path.endsWith('/kontrakan-row-5-v01.fbx') && !checkKontrakanOverlaps(bytes))
+    process.exitCode = 1;
 }

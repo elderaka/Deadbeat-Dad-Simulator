@@ -1,0 +1,53 @@
+title: AnakPickup
+---
+<<declare $action_ok = false>>
+<<declare $by_phone = false>>
+<<declare $return_trip = false>>
+<<declare $pickup_open = false>>
+<<declare $pickup_promised = false>>
+<<declare $pickup_mentioned = false>>
+<<declare $affinity = 0>>
+
+<<if $by_phone and (not $return_trip or not $pickup_open)>>
+    Anak: Halo, Pak? Aku masih sama Bu Guru. Nanti aku kabarin, ya. #line:anak_phone_hello
+    <<stop>>
+<<elseif $by_phone and $pickup_promised>>
+    Anak: Aku di gerbang, Pak. Yang ada tukang ciloknya. #line:anak_phone_promised
+    <<stop>>
+<<elseif $by_phone>>
+    Anak: Pak, udah bubar. Bapak bisa jemput? Tinggal aku sama tukang cilok. #line:anak_pickup_phone
+<<elseif $return_trip>>
+    <<if $pickup_promised>>
+        Anak: Pak! Di sini. Aku udah bilang sama Bu Guru Bapak yang jemput. #line:anak_pickup_promised
+    <<else>>
+        Anak: Eh, Bapak. Kita pulang sekarang? #line:anak_pickup_gate
+    <<endif>>
+<<else>>
+    <<if $pickup_mentioned and $affinity >= 2>>
+        Anak: Pak, hari ini naik motor lagi? Aku udah siap duluan, lho. #line:anak_home_affinity
+    <<elseif $pickup_mentioned>>
+        Anak: Nanti aku tunggu di gerbang yang biasa, ya, Pak. #line:anak_home_repeat
+    <<else>>
+        Anak: Pak, nanti jemput aku, ya. Kemarin Bapak nunggu di gerbang yang satunya. #line:anak_home_first
+        <<npc_action remember_pickup>>
+    <<endif>>
+<<endif>>
+
+-> Aku jemput. <<if ($by_phone or $return_trip) and $pickup_open and not $pickup_promised>> #line:anak_pickup_accept
+    <<npc_action promise_pickup>>
+    <<if $action_ok>>
+        <<if $affinity >= 2>>
+            Anak: Sip! Aku bilang ke Bu Guru Bapak otw. Beneran otw, ya. #line:anak_pickup_warm
+        <<else>>
+            Anak: Oke, Pak. Aku tunggu di gerbang. #line:anak_pickup_confirmed
+        <<endif>>
+    <<else>>
+        Anak: Eh, bentar, Pak. Bu Guru lagi manggil. Kayaknya aku udah ada yang jemput. #line:anak_pickup_expired
+    <<endif>>
+-> Ayo pulang. <<if not $by_phone and $return_trip>> #line:anak_escort_home
+    <<npc_action escort>>
+-> Ayo berangkat ke sekolah. <<if not $by_phone and not $return_trip>> #line:anak_escort_school
+    <<npc_action escort>>
+-> Bapak belum bisa. #line:anak_pickup_decline
+    Anak: Ya udah. Aku bilang Bu Guru dulu. #line:anak_pickup_declined
+===

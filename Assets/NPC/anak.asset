@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db95a3f02f409d5429d4f75815fe8a76, type: 3}
+  m_Name: anak
+  m_EditorClassIdentifier: Assembly-CSharp::BapakSimulator.NpcProfile
+  identity: {fileID: 11400000, guid: c1c73f95c678c81429913d79e17af114, type: 2}
+  displayName: Anak
+  routine:
+  - activity: Bersiap di rumah
+    startMinute: 480
+    endMinute: 500
+    blocksRequests: 1
+    location: {fileID: 11400000, guid: eda956e68b546ba4a8cec94a00a4b2ff, type: 2}
+    waitForSchoolPickup: 0
+  - activity: Sekolah
+    startMinute: 500
+    endMinute: 720
+    blocksRequests: 1
+    location: {fileID: 11400000, guid: 23d48c7a0e923374097f0bc7d5b6df73, type: 2}
+    waitForSchoolPickup: 0
+  - activity: Pulang setelah jemput
+    startMinute: 720
+    endMinute: 1440
+    blocksRequests: 0
+    location: {fileID: 11400000, guid: 395676d02f197cc4c8ecb6f4c1ebe682, type: 2}
+    waitForSchoolPickup: 1

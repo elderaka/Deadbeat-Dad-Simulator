@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02eb032190e46a245942c6f818300619, type: 3}
+  m_Name: rezeki-petir
+  m_EditorClassIdentifier: Assembly-CSharp::BapakSimulator.RiskGameProfile
+  id: rezeki-petir
+  displayName: Slot
+  banner: Tiga gulungan sekali putar.
+  kind: 0
+  stake: 1000
+  outcomes:
+  - label: KOPI  |  LELE  |  HELM
+    weight: 65
+    payoutPercent: 0
+  - label: KOPI  |  KOPI  |  PETIR
+    weight: 20
+    payoutPercent: 60
+  - label: LELE  |  LELE  |  LELE
+    weight: 12
+    payoutPercent: 200
+  - label: AYAM  |  AYAM  |  AYAM
+    weight: 3
+    payoutPercent: 1000
+  settlementDays: 0
+  crashStepSeconds: 0
+  crashStepPercent: 0
+  crashSurvivalPercent: 0
+  crashMaximumSteps: 0
+  stockAnchor: 0
+  stockReversion: 0
+  stockVolatility: 0
+  stockBadNewsChance: 0
+  stockBadNewsDrop: 0
+  stockSpreadPercent: 0

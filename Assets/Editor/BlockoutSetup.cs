@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using BapakSimulator;
 using UnityEditor;
 using UnityEditor.Build;
@@ -68,7 +69,12 @@ public static class BlockoutSetup
         camera.backgroundColor = new Color(0.55f, 0.72f, 0.84f);
         camera.clearFlags = CameraClearFlags.SolidColor;
         camera.gameObject.AddComponent<AudioListener>();
-        player.AddComponent<FirstPersonWalker>().Configure(camera);
+        var playerController = player.AddComponent<PlayerController>();
+        var jump = AssetDatabase.LoadAllAssetsAtPath("Assets/InputSystem_Actions.inputactions")
+            .OfType<UnityEngine.InputSystem.InputActionReference>()
+            .First(action => action.action?.name == "Jump" && action.action.actionMap.name == "Player");
+        playerController.Configure(camera, jump);
+        FirstDaySetup.AddToScene(playerController);
         PlayerSettings.companyName = "elderaka";
         PlayerSettings.productName = "Deadbeat Dad Simulator";
         PlayerSettings.defaultInterfaceOrientation = UIOrientation.LandscapeLeft;
@@ -107,9 +113,8 @@ public static class BlockoutSetup
             probe.AddComponent<CharacterController>();
             var camera = new GameObject("Test camera").AddComponent<Camera>();
             camera.transform.SetParent(probe.transform, false);
-            var walker = probe.AddComponent<FirstPersonWalker>();
+            var walker = probe.AddComponent<PlayerController>();
             walker.Configure(camera);
-            walker.SendMessage("Awake");
             var before = probe.transform.position;
             walker.Step(Vector2.one, new Vector2(0, 1000), 0.1f);
             var displacement = probe.transform.position - before;
@@ -117,9 +122,37 @@ public static class BlockoutSetup
                 throw new Exception("Diagonal movement exceeds walking speed");
             if (Quaternion.Angle(camera.transform.localRotation, Quaternion.Euler(-80, 0, 0)) > 0.01f)
                 throw new Exception("Camera pitch limit failed");
+
+            var target = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            target.transform.SetParent(probe.transform, true);
+            target.transform.position = camera.transform.position + camera.transform.forward * 1.5f;
+            target.transform.localScale = Vector3.one * 0.2f;
+            var interactable = target.AddComponent<WorldInteractable>();
+            Physics.SyncTransforms();
+            if (!walker.TryInteract())
+                throw new Exception("Visible interaction target was missed");
+
+            interactable.enabled = false;
+            if (walker.TryInteract())
+                throw new Exception("Disabled interaction target was accepted");
+            interactable.enabled = true;
+
+            var blocker = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            blocker.transform.SetParent(probe.transform, true);
+            blocker.transform.position = camera.transform.position + camera.transform.forward * 0.75f;
+            blocker.transform.localScale = Vector3.one * 0.2f;
+            Physics.SyncTransforms();
+            if (walker.TryInteract())
+                throw new Exception("Interaction passed through a blocking collider");
+
+            probe.transform.position = new Vector3(0, -6, -4);
+            walker.Step(Vector2.zero, Vector2.zero, 0.1f);
+            if ((probe.transform.position - before).sqrMagnitude > 0.0001f ||
+                Quaternion.Angle(camera.transform.localRotation, Quaternion.identity) > 0.01f)
+                throw new Exception("Fall recovery did not restore the spawn and camera");
         }
         finally { UnityEngine.Object.DestroyImmediate(probe); }
-        Debug.Log("BLOCKOUT_VALIDATION_PASSED: fifteen doorways, five walls, five floors, character scale, movement normalization and camera pitch.");
+        Debug.Log("BLOCKOUT_VALIDATION_PASSED: fifteen doorways, five walls, five floors, character scale, movement normalization, camera pitch, fall recovery and interaction occlusion.");
     }
 
     public static void BuildWindows()

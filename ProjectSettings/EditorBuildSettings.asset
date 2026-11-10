@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/prototype-title.unity
+    guid: 80f871e395356af4484211abf46be3e7
+  - enabled: 1
+    path: Assets/Scenes/kampung-foothill-blockout.unity
+    guid: 1a8df4c2374764a4180b4c49e7ceee22
+  - enabled: 1
     path: Assets/Scenes/kontrakan-blockout.unity
     guid: b3ceb0f371ddbd64e9d08f7060569124
   m_configObjects:

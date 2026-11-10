@@ -1,0 +1,144 @@
+title: IbuCommute
+---
+<<declare $factory_waiting = false>>
+<<declare $factory_promised = false>>
+<<declare $factory_deadline = "">>
+<<if $factory_waiting>>
+    Ibu: Pak, aku udah di luar pabrik. Bisa jemput? Aku tunggu sampai jam {$factory_deadline}. Lewat itu aku jalan. #line:ibu_factory_request
+<<elseif $factory_promised>>
+    Ibu: Aku masih di depan pabrik. Tadi bilangnya sampai jam {$factory_deadline}, ya. #line:ibu_factory_promised
+<<elseif $by_phone>>
+    Ibu: Halo, Pak. Ada apa? Kalau soal jemput, nanti aku kabarin. #line:ibu_phone_hello
+<<elseif $return_trip>>
+    Ibu: Oh, udah sampai. Sebentar, aku ambil rantang. #line:ibu_return
+<<else>>
+    Ibu: Pak, kalau mau nganter, sekarang. Aku masuk shift pagi. #line:ibu_outbound
+<<endif>>
+-> Aku jemput. <<if $factory_waiting>> #line:ibu_factory_accept
+    <<npc_action accept_factory_pickup>>
+    <<if $action_ok>>
+        Ibu: Oke. Aku nunggu di pos satpam. Jangan ke pintu barang lagi. #line:ibu_factory_accepted
+    <<else>>
+        Ibu: Nggak usah, Pak. Aku udah jalan. #line:ibu_factory_too_late
+    <<endif>>
+-> Pulang duluan saja. <<if $factory_waiting>> #line:ibu_factory_decline
+    <<npc_action decline_factory_pickup>>
+    Ibu: Ya udah, aku jalan. Nasinya di magic com, ya. #line:ibu_factory_declined
+-> Ayo ke pabrik. <<if not $by_phone and not $return_trip>> #line:ibu_escort_factory
+    <<npc_action escort>>
+-> Ayo pulang. <<if not $by_phone and $return_trip>> #line:ibu_escort_home
+    <<npc_action escort>>
+-> Bisa tolong jemput Anak? <<if $pickup_open>> #line:ibu_ask_pickup
+    <<npc_action ask_coverage>>
+    <<if $action_ok>>
+        Ibu: Bisa. Biar aku yang jemput hari ini. #line:ibu_pickup_yes
+    <<else>>
+        Ibu: Jam segitu aku masih di line, Pak. Coba tanya Pak Sopir. #line:ibu_pickup_no
+    <<endif>>
+-> Nanti saja. #line:ibu_close
+===
+
+title: PakSopir
+---
+<<declare $transport_fee = "">>
+<<declare $transport_recurring = false>>
+<<if $transport_recurring and not $pickup_open>>
+    Pak Sopir: Udah masuk catatan saya, Pak. Anak tinggal tunggu di gerbang. #line:sopir_active
+<<else>>
+    Pak Sopir: Bisa saya jemput sekalian, Pak. Rp{$transport_fee} sekali jemput. #line:sopir_offer
+<<endif>>
+-> Titip jemput Anak, Pak. <<if $pickup_open>> #line:sopir_accept
+    <<npc_action arrange_transport>>
+    <<if $action_ok>>
+        Pak Sopir: Sip. Tolong bilang Anak tunggu di gerbang yang biasa, ya. #line:sopir_confirmed
+    <<else>>
+        Pak Sopir: Belum bisa saya masukin, Pak. Coba cek saldo sama jadwalnya dulu. #line:sopir_refused
+    <<endif>>
+-> Nanti saja. #line:sopir_close
+===
+
+title: OjolPassenger
+---
+<<declare $ride_rider = "">>
+<<declare $ride_pickup = "">>
+<<declare $ride_destination = "">>
+<<declare $ride_fare = "">>
+<<declare $ride_offered = false>>
+<<declare $ride_complete = false>>
+<<declare $buyout_disclose = false>>
+<<declare $buyout_available = false>>
+<<declare $buyout_declined = false>>
+<<declare $buyout_sold = false>>
+<<declare $buyout_item = "">>
+<<declare $buyout_price = "">>
+<<declare $buyout_value = "">>
+<<if $buyout_sold>>
+    {$ride_rider}: TV-nya udah saya bawa, Pak. Remotenya tadi ikut, kan? #line:yanto_bought
+<<elseif $buyout_declined>>
+    {$ride_rider}: Soal TV kemarin, udah, Pak. Nggak saya ungkit lagi. #line:yanto_decline_remembered
+<<endif>>
+<<if $ride_complete>>
+    {$ride_rider}: Makasih, Pak. Lumayan, sampai sebelum orangnya pulang. #line:ojol_complete
+<<elseif not $ride_offered>>
+    {$ride_rider}: Saya masih di sini, Pak. Ke {$ride_destination}, ya. #line:ojol_wait
+<<else>>
+    {$ride_rider}: Pak, bisa anter ke {$ride_destination}? Saya kasih Rp{$ride_fare}. #line:ojol_offer
+<<endif>>
+-> Boleh, Pak. <<if $ride_offered>> #line:ojol_accept
+    <<npc_action accept_ride>>
+    <<if $action_ok>>
+        {$ride_rider}: Oke. Saya tunggu di marka {$ride_pickup}. #line:ojol_accepted
+    <<endif>>
+-> Lagi seret, To. Tagihan belum kebayar. <<if $buyout_disclose>> #line:yanto_disclose
+    <<npc_action disclose_finances>>
+    <<if $action_ok>>
+        <<jump PakYantoBuyout>>
+    <<endif>>
+-> Soal TV kemarin, To... <<if $buyout_available>> #line:yanto_reopen
+    <<jump PakYantoBuyout>>
+-> Nanti saja. #line:ojol_close
+===
+
+title: PakYantoBuyout
+---
+Pak Yanto: Kalau butuh tunai sekarang, {$buyout_item} saya ambil Rp{$buyout_price}. Saya angkut sendiri. #line:yanto_low_offer
+Bapak: Lho, biasanya laku Rp{$buyout_value}, To. Itu belum sama remote. #line:yanto_market_comparison
+-> Jual seharga Rp{$buyout_price}. #line:yanto_accept_sale
+    <<npc_action accept_buyout>>
+    <<if $action_ok>>
+        Pak Yanto: Nih, hitung dulu. Remotenya taruh di atas TV aja. #line:yanto_purchase_done
+    <<else>>
+        Pak Yanto: Wah, uangnya udah saya pakai, Pak. Lain kali aja. #line:yanto_purchase_stale
+    <<endif>>
+-> TV-nya nggak saya jual, To. #line:yanto_decline_sale
+    <<npc_action decline_buyout>>
+    Pak Yanto: Ya udah, Pak. Tadi saya cuma nawar. #line:yanto_decline_done
+===
+
+title: BuWarung
+---
+<<declare $sale_item = "">>
+<<declare $sale_count = 0>>
+<<declare $sale_price = "">>
+<<declare $sale_total = "">>
+<<if $sale_count > 0>>
+    Bu Warung: Wah, dapat {$sale_count} {$sale_item}, Pak? Saya ambil Rp{$sale_price} seekor. #line:warung_offer
+    -> Jual satu • Rp{$sale_price}. #line:warung_sell_one
+        <<npc_action sell_one>>
+        <<if $action_ok>>
+            Bu Warung: Nih uangnya. Ikannya taruh di baskom aja, Pak. #line:warung_sold_one
+        <<else>>
+            Bu Warung: Sebentar, Pak. Ikannya masih ada di tas? #line:warung_failed_one
+        <<endif>>
+    -> Jual semua • Rp{$sale_total}. #line:warung_sell_all
+        <<npc_action sell_all>>
+        <<if $action_ok>>
+            Bu Warung: Saya ambil semua, ya. Nanti sore saya goreng. #line:warung_sold_all
+        <<else>>
+            Bu Warung: Hitung lagi, Pak. Tadi kayaknya jumlahnya beda. #line:warung_failed_all
+        <<endif>>
+    -> Saya bawa pulang dulu, Bu. #line:warung_close
+<<else>>
+    Bu Warung: Belum dapat, Pak? Kalau ada {$sale_item}, saya ambil Rp{$sale_price} seekor. #line:warung_empty
+<<endif>>
+===

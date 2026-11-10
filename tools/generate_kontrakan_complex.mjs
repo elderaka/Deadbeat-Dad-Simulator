@@ -5,6 +5,8 @@ function createComplexFBX(){
   const W=3.5, D=9, H=2.8, wall=0.15, part=0.10, dh=2.1;
   const front=[0,.90], lounge=[.76,.85], bedroom=[-.055,.85], bath=[1.05,.70];
   const colors={living:[.78,.65,.46],sleep:[.55,.66,.73],kitchen:[.55,.69,.62],bath:[.60,.62,.75],terrace:[.62,.62,.58],outer:[.87,.81,.72],inner:[.90,.88,.84],wood:[.40,.28,.18],roof:[.54,.29,.24],facade1:[.90,.75,.52],facade2:[.64,.79,.67],facade3:[.86,.67,.66],facade4:[.65,.73,.85],facade5:[.76,.74,.70],court:[.65,.65,.61],green:[.34,.52,.35],metal:[.35,.38,.42],line:[.96,.95,.81],soil:[.45,.40,.33],utility:[.52,.60,.67]};
+  const blocks=[];
+  const seamTolerance=1e-8;
   const groups={}; const mats={}; let unitOffset=0,unitPrefix='';
   function put(name, vertices, faces, mat){
     name=unitPrefix+name;
@@ -14,11 +16,50 @@ function createComplexFBX(){
     groups[name].verts.push(...vertices);
     for(const f of faces)groups[name].faces.push(f.map(k=>k+o));
   }
-  function block(n,xa,xb,ya,yb,za,zb,m){
+  function block(name,xa,xb,ya,yb,za,zb,material){
     if(xb<=xa||yb<=ya||zb<=za)return;
-    const v=[[xa,ya,za],[xb,ya,za],[xb,yb,za],[xa,yb,za],[xa,ya,zb],[xb,ya,zb],[xb,yb,zb],[xa,yb,zb]].flat();
-    const f=[[0,2,1],[0,3,2],[4,5,6],[4,6,7],[0,1,5],[0,5,4],[1,2,6],[1,6,5],[2,3,7],[2,7,6],[3,0,4],[3,4,7]];
-    put(n,v,f,m);
+    name=unitPrefix+name;
+    if(!groups[name]){groups[name]={verts:[],faces:[]};mats[name]=material}
+    blocks.push({name,material,min:[xa+unitOffset,ya,za],max:[xb+unitOffset,yb,zb]});
+  }
+  // Subtract the shared area from later faces on the same plane and facing the same way.
+  // The first box keeps the surface and its material. Opposite-facing faces remain available
+  // to the separate meshes and their colliders.
+  function subtractRectangle(rect, cover){
+    const [u0,u1,v0,v1]=rect;
+    const left=Math.max(u0,cover[0]), right=Math.min(u1,cover[1]);
+    const bottom=Math.max(v0,cover[2]), top=Math.min(v1,cover[3]);
+    if(right-left<=seamTolerance || top-bottom<=seamTolerance)return [rect];
+    return [[u0,left,v0,v1],[right,u1,v0,v1],[left,right,v0,bottom],[left,right,top,v1]]
+      .filter(([a,b,c,d])=>b-a>seamTolerance && d-c>seamTolerance);
+  }
+  function emitBlockFaces(){
+    for(const [index,box] of blocks.entries()){
+      for(let axis=0;axis<3;axis++){
+        const u=(axis+1)%3,v=(axis+2)%3;
+        for(const side of ['min','max']){
+          const plane=box[side][axis];
+          let rectangles=[[box.min[u],box.max[u],box.min[v],box.max[v]]];
+          for(let previous=0;previous<index && rectangles.length;previous++){
+            const cover=blocks[previous];
+            if(Math.abs(plane-cover[side][axis])>seamTolerance)continue;
+            rectangles=rectangles.flatMap(rect=>subtractRectangle(rect,
+              [cover.min[u],cover.max[u],cover.min[v],cover.max[v]]));
+          }
+          for(const [u0,u1,v0,v1] of rectangles){
+            const vertices=[[u0,v0],[u1,v0],[u1,v1],[u0,v1]].flatMap(([a,b])=>{
+              const point=[];
+              point[axis]=plane;
+              point[u]=a;
+              point[v]=b;
+              return point;
+            });
+            const faces=side==='max'?[[0,1,2],[0,2,3]]:[[0,2,1],[0,3,2]];
+            put(box.name,vertices,faces,box.material);
+          }
+        }
+      }
+    }
   }
   function wx(n,z,t,x0,x1,m,door){
     if(!door){block(n,x0,x1,0,H,z-t/2,z+t/2,m);return;}
@@ -106,6 +147,7 @@ function createComplexFBX(){
   block("Utility_Laundry_PostA",6.43,6.52,-.08,1.92,-5.55,-5.46,"metal");
   block("Utility_Laundry_PostB",8.45,8.54,-.08,1.92,-5.55,-5.46,"metal");
   block("Utility_Laundry_Rail",6.43,8.54,1.84,1.90,-5.55,-5.46,"metal");
+  emitBlockFaces();
   // Continuous roof ridge runs left-to-right across the five units.
   // Independent meshes for Unity roof visibility control.
   function complexRoof(name,z0,z1,y0,y1){
