@@ -2,7 +2,7 @@
 title: "Project Journal"
 type: index
 status: living
-updated: 2026-11-02
+updated: 2026-11-11
 ---
 
 # Project Journal — Chronological Scratchpad
@@ -23,6 +23,9 @@ This is a durable, versioned scratchpad for brainstorming, experiments, multi-ag
 ## 2026-11-05
 - [Unity Initialization](2026-11-05-unity-initialization.md) — approved setup, first-person blockout, tooling and validation.
 - [Project Verification and Risk PR Reconciliation](2026-11-05-project-verification.md) — fresh checks, validation caveat, PR #2 authority conflicts and documentation-only next steps.
+
+## 2026-11-11
+- [Progression and Post-Slice Milestones](2026-11-11-progression-and-milestone-review.md) — bare-slice status, proposed connected unlocks, economy-first next milestone and documented gaps.
 
 ## Create new journals
 Use:

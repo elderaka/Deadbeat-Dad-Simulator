@@ -2,7 +2,7 @@
 title: "Game Design Document"
 type: index
 status: living
-updated: 2026-11-02
+updated: 2026-11-11
 ---
 
 # Game Design Document (GDD)
@@ -26,6 +26,7 @@ Each subject lives in one file; link instead of duplicating authoritative defini
 | [12](12-open-questions.md) | Questions requiring creator input | Open |
 | [14](14-kontrakan-complex.md) | Proposed 5-unit kontrakan compound blockout | Proposed environment extension |
 | [15](15-risk-economy-and-neighbor-exploitation.md) | Pinjol, judol, hidden financial pressure and opportunistic neighbors | Canonical intent; proposed balancing |
+| [16](16-connected-progression.md) | Connected fishing, vehicle, housing and autonomous family progression | Proposed to prototype |
 | [13](13-household-control.md) | Direct Bapak control, indirect household coordination | Canonical architecture, proposed mechanics |
 
 For design authority see [Decision Records](../decisions/index.md); for what happened in a session see [Journal](../journal/index.md).

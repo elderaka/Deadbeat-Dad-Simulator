@@ -1,28 +1,34 @@
 ---
 title: "Roadmap"
 type: index
-status: proposed
-updated: 2026-11-10
+status: living
+updated: 2026-11-11
 ---
 
-# Roadmap — Proposed, Not Committed Sprint
+# Roadmap — Evidence-Based Milestones
 
-**Stage 0 — Canon:** Documentation foundation, ADRs, owner review and unanswered choices.
+## Current status (2026-11-11)
 
-**Approved first technical milestone:** First-person walkable house compound on Unity, with Windows/Android compatibility ([ADR-0006](../decisions/ADR-0006-unity-prototype-foundation.md)). Transport and pond fishing are playable in the local Kampung slice. Their tuning remains provisional.
+**M00 — Bare technical / playable slice: ACHIEVED as a prototype.** The main branch contains first-person Kampung, the five-unit starter compound, transport/escorts, phone/Yarn conversations, a playable fishing fight and sales, authored ojol routes, bill and pinjol screens, simulated judol, day/night cycle and checkpoint saving. See [prototype log](neighborhood-phone.md) for previously reported scripted Unity checks. This is **not** evidence of a balanced economy, polished first-time-user experience, Android certification or real-player acceptance.
 
-**TODO — Android build tools:** Deferred by the creator on 2026-11-05 because storage is limited. Install Android Build Support/SDK/NDK/Java only when requested, then build and test on a physical device. Touch support in code does not establish device compatibility.
+**M01 — Recurring economy and first consequence loop: NEXT / PROPOSED.** Deliver transaction-safe persistence, Ibu's earned wage contributions and recurring essentials, net earning choices, visible delayed financial/NPC consequences and a time-reclaimed recap. Validate through short responsible/reckless playthroughs before broad expansion. [Milestone brief + acceptance tests](milestone-01-economy-and-consequences.md).
 
-**Stage 1 — Two-Day Loop:** Paper prototype and playable day-one obligations; day-two convenience upgrade shows a clear reduction in work with an economic trade-off. [Vertical Slice](vertical-slice.md)
+**M02 — Connected progression proof: PROPOSED, after M01.** Prototype two fishing locations (paid pond/public river), one meaningful vehicle improvement, one functional home upgrade, and one family milestone that changes the daily loop. [Progression GDD](../gdd/16-connected-progression.md) · [First 30 in-game days: pacing sketch](first-30-days.md).
 
-**Current mechanics reference:** [Neighborhood and Phone Prototype](neighborhood-phone.md) documents the local playable slice and its remaining validation.
+**M03 — Alpha sandbox / optional businesses: FUTURE.** Nambak/harvest business, optional vehicle rentals/delegation, broader household routines, more neighborhoods and long-term chronicle. No obligatory tycoon route.
 
-**Stage 2 — Seven-Day Slice:** One family, neighborhood map, live fishing, schedules, financial cycle, upgrades, contextual events and weekly results.
+**M04 — Release readiness: FUTURE.** Real device/input tests, Windows/Android deployment strategy, accessibility, localization and production polish.
 
-**Stage 3 — Alpha Sandbox:** More household routines, character goals, businesses, customization, simulation polish.
+**M05 — Multiplayer: DEFERRED.** Social fishing lobbies/chat only after core single-player validation; [accepted decision](../decisions/ADR-0002-multiplayer-roadmap.md).
 
-**Stage 4 — Release Strategy:** Confirm platform, input, onboarding, localization and publishing requirements.
+## Historical milestones
 
-**Stage 5 — Future Multiplayer:** Social fishing lobbies/chat after core single-player fun is proven. [Accepted deferral](../decisions/ADR-0002-multiplayer-roadmap.md)
+- Unity first-person walkable blockout ([accepted foundation](../decisions/ADR-0006-unity-prototype-foundation.md)): achieved before the playable Kampung prototype.
+- [Two-Day Core Loop Experiment](vertical-slice.md): concept and early implemented mechanics. **The two-day experience hypothesis is not conclusively playtested** merely because its controls exist.
+- [Neighborhood and Phone Prototype](neighborhood-phone.md): actual coded mechanics, scene checks and remaining limitations.
 
-Stage transitions require evidence, not just finished checkboxes. Do not use this roadmap as a fixed delivery schedule.
+## Known deferred tooling
+
+Android Build Support/SDK/NDK/Java and physical-device validation were deferred because of storage constraints. Desktop touch controls in code do not establish Android compatibility.
+
+Milestone entry and exit depend on working evidence, not calendar promises. Exact numerical tuning, 30-day pacing and family event outcomes remain proposals until playtested.

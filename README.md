@@ -1,17 +1,19 @@
 # Deadbeat Dad Simulator (Bapak Simulator)
 
-A comedic Indonesian household-and-leisure simulator about **earning the freedom to do absolutely nothing** while helping your family thrive.
+A comedic Indonesian household-and-leisure simulator about **earning the freedom to do absolutely nothing** while helping the family thrive.
 
-This repository begins as a **design-first project**. The modular, Obsidian-compatible game design vault is being prepared in [`docs/`](docs/README.md). Canonical design decisions, proposals, experiments, and open questions are kept separate.
-
-> **Design principle:** The better Bapak becomes at managing life, the less he is required to do personally.
+> **North star:** The better Bapak becomes at managing life, the less he is required to do personally. Ibu and Anak have independent routines, interests and choices.
 
 ## Unity prototype
 
-This repository root is also the Unity project root. Use Unity **6000.4.4f1** (URP, Input System). Assets, docs and generators all stay inside the project.
+Repository root is a Unity project targeting **Unity 6000.6.8f1**, URP and the Input System (see `ProjectSettings/ProjectVersion.txt`). Build Settings currently begin with `Assets/Scenes/prototype-title.unity`, then `Assets/Scenes/kampung-foothill-blockout.unity`.
 
-Open `Assets/Scenes/kontrakan-blockout.unity`, then press Play. Desktop: WASD to walk, mouse to look, Escape to release the cursor, click to resume. Android: drag the left half to walk and the right half to look, in landscape. Device validation and Android build tooling status are recorded in the [initialization handoff](docs/journal/2026-11-05-unity-initialization.md).
+The bare Kampung prototype contains first-person movement, school and factory escorts, vehicle/passenger transport, authored ojol routes, physical pond fishing and fish sales, phone/Yarn dialogue, pinjol and fictional judol interactions, and end-of-day checkpoint saving. Many balances, visual assets, touch/device controls and consequence links are provisional. For detailed work and prior scripted Play Mode checks see [Neighborhood and Phone Prototype](docs/roadmap/neighborhood-phone.md).
 
-The scene is a provisional five-unit house blockout with a 1.65m character. Transport, fishing, NPC simulation and English UI are later work. See [approved foundation](docs/decisions/ADR-0006-unity-prototype-foundation.md).
+The older `Assets/Scenes/kontrakan-blockout.unity` remains a limited blockout fixture. Editor commands under `Bapak Simulator` may regenerate scenes; save manual edits before invoking destructive setup commands.
 
-Editor menu `Bapak Simulator > Validate Blockout` runs the collision/scale/movement smoke check. `Create Walkable Blockout` regenerates the scene; do not use it to preserve manual scene edits.
+## Docs and milestones
+
+Start with the [Design Vault](docs/index.md). The [roadmap](docs/roadmap/index.md) records the bare slice as implemented; **recurring household economics and meaningful delayed consequences are the next milestone**, not yet a completed feature. The [Connected Progression GDD](docs/gdd/16-connected-progression.md) is a proposal to prototype and test, not a finalized skill tree.
+
+Only Bapak is directly controlled. The optional fictional judol/pinjol systems use game money and depict financial risk; they are not intended as real-money gambling or purchasable wagering products.

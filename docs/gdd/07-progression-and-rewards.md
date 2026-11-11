@@ -3,7 +3,7 @@ title: "07 — Progression, Rewards and Endgame"
 status: proposed
 type: design
 tags: [gdd]
-updated: 2026-11-02
+updated: 2026-11-11
 ---
 
 # 07 — Progression, Rewards and Endgame
@@ -43,4 +43,8 @@ A player who makes sufficiently damaging decisions may lose housing and marriage
 Full automation risks boredom. Preserve voluntary goals: festivals, family trips, rare fishing challenges, neighbor projects, improving the neighborhood and self-directed hobbies. **Optimize away obligation, not opportunity.**
 
 ## Victory
+
+### Connected progression workshop — 2026-11-11 (proposed)
+
+The creator agreed to **try** a unified progression experiment: fishing venue choices (paid pond vs public river), vehicles as distinct mobility/capacity tools, functional house improvements, Ibu's autonomous career changes, and Anak's interests/independence affecting everyday gameplay as well as endings. Nambak and rentals are later optional business routes. Do **not** interpret this as acceptance of a complete skill tree, specific upgrade prices, unlock days or mandatory wealth stage. Use [Connected Progression §16](16-connected-progression.md), the [30-day pacing sketch](../roadmap/first-30-days.md) and the [economy milestone](../roadmap/milestone-01-economy-and-consequences.md).
 Not maximum money, most children or legendary fish. Success is household wellbeing plus meaningful freedom of choice. The ending could be Bapak fishing peacefully while everyone is doing well, but sandbox play continues.
