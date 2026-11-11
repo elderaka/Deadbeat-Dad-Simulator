@@ -1,7 +1,7 @@
 ---
 title: "Two-Day Core Loop Experiment"
 type: experiment
-status: experiment
+status: proposed
 updated: 2026-11-11
 ---
 
