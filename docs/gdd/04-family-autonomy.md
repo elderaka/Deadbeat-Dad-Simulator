@@ -3,7 +3,7 @@ title: "04 — Family Autonomy and Relationships"
 status: proposed
 type: design
 tags: [gdd]
-updated: 2026-11-02
+updated: 2026-11-11
 ---
 
 # 04 — Family Autonomy and Relationships
@@ -35,6 +35,10 @@ Child asks Bapak to attend a school performance overlapping a fishing tournament
 Persistent harmful choices and financial strain can contribute to **separation/divorce**, and the household can lose its home; this is possible, not an automatic invisible-meter threshold. Ibu keeps independent agency and believable dialogue. The post-divorce **full-fishing sandbox** path is an accepted ironic outcome; details involving children and living arrangements remain open. See [Risk Economy §15](15-risk-economy-and-neighbor-exploitation.md) and [ADR-0006](../decisions/ADR-0006-risk-economy-social-exploitation.md).
 
 ## MVP candidate
+
+### Progression that changes daily play (proposed)
+
+Rather than player-purchased skill points, **Ibu has an independent work/life trajectory** (e.g., shift or role changes with income, availability and relationship effects), and **Anak develops learning, age-appropriate independence, interests/friendships and bonds**. Candidate events can create a new pickup obligation and later allow a negotiated carpool. A higher salary may cost shared time; family members are not upgrade items. Outcomes can contribute to endings without becoming a deterministic checklist. See [Connected Progression §16](16-connected-progression.md).
 One spouse, one child; simple schedules, few traits, two or three meaningful family events and transparent causes for relationship changes. Example names Adit/Pak Ujang are placeholders, not lore canon.
 
 ## Risks

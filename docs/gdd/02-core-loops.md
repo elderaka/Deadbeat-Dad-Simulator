@@ -3,7 +3,7 @@ title: "02 — Core Gameplay Loops"
 status: proposed
 type: design
 tags: [gdd]
-updated: 2026-11-02
+updated: 2026-11-11
 ---
 
 # 02 — Core Gameplay Loops
@@ -24,6 +24,8 @@ Morning commutes are central to the original pitch: drive the wife to her factor
 Review household finances, family aspirations, school/work milestones, recurring bills, neighbor relationships and which inconveniences to eliminate next.
 
 ## Long-term loop
+
+The current progression proposal links **fishing access, vehicle capability, functional housing and family autonomy** so each milestone changes what Bapak can do the next day. See [Connected Progression §16](16-connected-progression.md) and the [first-30-day sketch](../roadmap/first-30-days.md). These are candidates to test after recurring household economics exist.
 Housing and transport improvement → more reliable routines → household resilience → family growth and independent careers → income-producing investments → leisure with purpose and optional retirement.
 
 ## Core action grammar

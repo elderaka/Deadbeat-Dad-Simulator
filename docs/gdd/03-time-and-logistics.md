@@ -3,7 +3,7 @@ title: "03 — Time, Responsibilities and Automation"
 status: proposed
 type: design
 tags: [gdd]
-updated: 2026-11-02
+updated: 2026-11-11
 ---
 
 # 03 — Time, Responsibilities and Automation
@@ -39,4 +39,6 @@ A multiplicative or gated score discourages maximizing free time through neglect
 Do not require manually repeating a solved routine forever. Avoid intrusive hunger/thirst/toilet micromanagement unless an exceptional minigame needs it. Automating chores should unlock enjoyable choices rather than empty gameplay.
 
 ## Testable hypothesis
+
+The [proposed connected progression framework](16-connected-progression.md) treats a new arrangement—not a generic XP buff—as the main unlock. The next [economy milestone](../roadmap/milestone-01-economy-and-consequences.md) must expose actual hours spent on obligations, work, travel and leisure, with task coverage tracked independently so neglect never appears as earned free time.
 After purchasing an automation upgrade, players should understand *which* obligation disappeared, *what* it costs, and *what new choice* that extra time enables.

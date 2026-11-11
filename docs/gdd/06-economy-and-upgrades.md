@@ -3,7 +3,7 @@ title: "06 — Economy, Purchases and Investments"
 status: proposed
 type: design
 tags: [gdd]
-updated: 2026-11-02
+updated: 2026-11-11
 ---
 
 # 06 — Economy, Purchases and Investments
@@ -37,4 +37,10 @@ Players may voluntarily enter fictional high-cost **pinjol** loans or simulated 
 **Numbers previously discussed (rupiah amounts and time savings) are examples only, not canonical prices.** Build a parameter sheet later after playtesting.
 
 ## Risk signals
+
+### Post-slice economy gap and proposed sequence — 2026-11-11
+
+The repository now has a wallet, ojol fare payout, fish inventory/sale, bills, one active pinjol and several fictional risk games. **It does not yet have a validated recurring household economy.** In particular, Ibu's wages/shift-to-cash flow, groceries/rent/recurring essentials, account ownership and consent, partial/negotiated repayment, transaction-safe persistence and long-term balance remain open. Avoid describing prototype transactions as a complete household budget.
+
+The next [milestone](../roadmap/milestone-01-economy-and-consequences.md) builds a durable financial event history and one readable household decision → budget → social response chain before expansion. [Connected Progression §16](16-connected-progression.md) treats vehicle maintenance, useful furnishings, fishing access and later nambak/rental as distinct choices that can free time **or** create commitments.
 No meaningful trade-offs; upgrades that always pay off instantly; impossible early debt; fish farming so profitable it invalidates the rest of the game.

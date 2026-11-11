@@ -3,7 +3,7 @@ title: "05 — Fishing and Leisure"
 status: proposed
 type: design
 tags: [gdd]
-updated: 2026-11-02
+updated: 2026-11-11
 ---
 
 # 05 — Fishing and Leisure
@@ -29,6 +29,10 @@ The creator wants possible household collapse/divorce to unlock or transition in
 Warung kopi gossip, visiting neighbors, family outings, small repair jobs, local events and other hobbies can compete for reclaimed hours. Ideally other activities improve the management game through relationships or opportunities.
 
 ## Original rhythm
+
+### Location choice rather than a linear unlock ladder (proposed)
+
+**Paid kolam pemancingan:** pay a visible fee for convenient permitted access, predictable conditions and social opportunities. **Public river bank:** no entrance fee but greater travel and variable fishing conditions; public river fishing is not inherently a punishable action. **Restricted/private area:** optional later location with clear signage, permission routes and legible consequences. **Galatama:** future competitive activity, not necessarily sellable catches. **Owned tambak** is fish production with upkeep/harvest, **not** the same as paying to fish at a venue. The first location test should use the existing pond and one authored public river spot before adding more fish species or gear ladders. See [Connected Progression §16](16-connected-progression.md).
 Morning school/factory commute, daytime fishing, evening pickups—the founding sketch. Long-term gameplay should let Bapak replace portions of that routine through earned convenience.
 
 **Open:** Complexity of fishing controls, fish economy, catches vs fish farming, selling, tournament frequency, and how much of fishing is a full minigame for the MVP.

@@ -2,7 +2,7 @@
 title: "12 — Open Questions"
 status: open
 type: decision-queue
-updated: 2026-11-02
+updated: 2026-11-11
 ---
 
 # Open Questions — Creator Decisions Needed
@@ -22,6 +22,10 @@ Avoid promoting proposals without explicit user agreement. Prioritize high-impac
 | Q-013 | Judol RTP/honeytrap implementation and Pinjol loan terms? | Risk balance, fairness, ratings | Creator suggested ≤0.8 RTP; no locked numeric rates |
 | Q-014 | How do NPC awareness, lowball prices, encounter chances and cooldowns work? | Believability, counterplay, AI scope | Distress plus NPC-specific knowledge; values hidden |
 | Q-015 | What exactly happens after divorce to home, children and fishing-only sandbox, and is alternate access available? | Progression, consequence tone | Divorce-to-fishing route accepted; transition open |
+| Q-016 | What monthly income/expense cadence and account-sharing rules make debt recovery possible on each difficulty? | Economy balance and Ibu's agency | Salary/essentials and transaction ledger before full progression |
+| Q-017 | Which fishing locations are public, paid, restricted or permitted, and what is the fee/catch ownership model? | Fishing choices and clear legality | Paid pond + public river first; restricted area later |
+| Q-018 | Which first vehicle/home upgrade changes a genuine daily verb or saves obligations? | Upgrade utility and cost | Supra repair or route access; one functional furnishing |
+| Q-019 | How fast and by whose consent should Ibu career shifts and Anak independence/social activities change obligations? | Agency, pacing and endings | One meaningful family milestone before full development trees |
 
 ## Resolved decisions
 - **2026-11-05 — Q-002, Q-004, Q-008:** First person; approachable simulation with comedic consequences; Unity with Windows/Android compatibility. Indonesian first and English intended. See [ADR-0006](../decisions/ADR-0006-unity-prototype-foundation.md).
