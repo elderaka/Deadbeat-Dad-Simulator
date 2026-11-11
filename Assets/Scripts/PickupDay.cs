@@ -86,6 +86,18 @@ namespace BapakSimulator
             return true;
         }
 
+        internal int PickupStartMinute => schedule.PickupStartMinute;
+        internal int PickupDeadline => schedule.PickupDeadline;
+        internal bool SchoolPickupMissed => pickup == PickupState.Missed;
+        internal PickupProvider SchoolPickupProvider => SchoolPickupMissed ? PickupProvider.Missed
+            : state == DayState.Finished && LastRecap is DayRecap recap
+            ? recap.Pickup
+            : coverage switch
+            {
+                Coverage.Ibu => PickupProvider.Ibu,
+                Coverage.Transport => PickupProvider.PaidTransport,
+                _ => PickupProvider.Bapak
+            };
         internal int TransportFee => transportFee;
         public bool HasRecurringTransport => recurringTransport;
         public string Message { get; private set; } = "Lihat penanda Rumah, lalu berinteraksi untuk mulai.";
@@ -316,12 +328,7 @@ namespace BapakSimulator
 
         private void Finish()
         {
-            var provider = pickup != PickupState.Completed ? PickupProvider.Missed : coverage switch
-            {
-                Coverage.Ibu => PickupProvider.Ibu,
-                Coverage.Transport => PickupProvider.PaidTransport,
-                _ => PickupProvider.Bapak
-            };
+            var provider = pickup == PickupState.Completed ? SchoolPickupProvider : PickupProvider.Missed;
             PreviousRecap = LastRecap;
             LastRecap = new DayRecap(DayNumber, provider, dayExpenses, FishingMinutes, CatchesToday, firstCastMinute);
             fishingActive = false;

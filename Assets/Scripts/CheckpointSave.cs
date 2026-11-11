@@ -10,6 +10,7 @@ namespace BapakSimulator
     public sealed class CheckpointSave : MonoBehaviour
     {
         [SerializeField] private string slotId;
+        [SerializeField] private SceneSequence newGameSequence;
         [SerializeField] private ItemInventory inventory;
         [SerializeField] private ItemDefinition[] items = Array.Empty<ItemDefinition>();
         [SerializeField] private CommuteLeg[] trips = Array.Empty<CommuteLeg>();
@@ -62,7 +63,8 @@ namespace BapakSimulator
                     launch.Preset.InheritedDebtDueDay);
             }
             if (Load()) day.DayFinished += Save;
-            day.StartAfterCheckpoint();
+            if (launch?.Preset == null || newGameSequence == null || !newGameSequence.TryPlay(day.StartAfterCheckpoint))
+                day.StartAfterCheckpoint();
         }
 
         private void OnDestroy()

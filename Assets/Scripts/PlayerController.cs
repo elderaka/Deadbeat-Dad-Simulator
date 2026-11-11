@@ -8,6 +8,7 @@ namespace BapakSimulator
     public sealed class PlayerController : MonoBehaviour
     {
         [SerializeField] private Camera view;
+        [SerializeField] private TouchControls touchControls;
         [SerializeField] private InputActionReference jumpAction;
         [SerializeField] private InputAction switchVehicleView;
         [SerializeField, Min(0)] private float jumpHeight = 0.75f;
@@ -28,6 +29,7 @@ namespace BapakSimulator
         private float verticalSpeed;
         private PauseMenu pauseMenu;
         private bool gameplayInputBlocked;
+        private bool sequenceInputBlocked;
         private bool dialogueLookActive;
         private bool preferChaseView;
         private bool chaseView;
@@ -37,10 +39,20 @@ namespace BapakSimulator
         private int? lookTouchId;
 
         public bool IsPaused { get; private set; }
+        internal bool UsesTouchControls => touchControls != null && touchControls.isActiveAndEnabled && touchControls.ModeEnabled;
         internal bool HasPauseMenu => pauseMenu != null && pauseMenu.isActiveAndEnabled;
 
-        internal bool CanOpenDialogue => isActiveAndEnabled && ActiveVehicle == null &&
+        internal bool CanOpenDialogue => !sequenceInputBlocked && CanOpenSequenceDialogue;
+
+        internal bool CanOpenSequenceDialogue => isActiveAndEnabled && ActiveVehicle == null &&
             !IsPaused && !gameplayInputBlocked && !worldInteractionBlocked;
+
+        internal void SetSequenceInputBlocked(bool blocked)
+        {
+            sequenceInputBlocked = blocked;
+            if (!blocked) resumeInteractionFrame = Time.frameCount + 1;
+            ClearTouches();
+        }
 
         public VehicleDrive ActiveVehicle { get; private set; }
         private Transform walkingParent;
@@ -115,7 +127,7 @@ namespace BapakSimulator
 
         private void Update()
         {
-            if (IsPaused || Time.frameCount < resumeInteractionFrame) return;
+            if (IsPaused || sequenceInputBlocked || Time.frameCount < resumeInteractionFrame) return;
             if (gameplayInputBlocked)
             {
                 if (ActiveVehicle != null && ActiveVehicle.CanUseChaseView &&
@@ -131,16 +143,22 @@ namespace BapakSimulator
             Vector2 move = Vector2.zero;
             Vector2 look = Vector2.zero;
             bool interact = false;
+            bool jump = false;
 
             if (Application.isFocused && Time.deltaTime > 0)
             {
-                if (Application.isMobilePlatform)
+                if (UsesTouchControls && !worldInteractionBlocked)
+                {
+                    touchControls.Read(out move, out look, out jump);
+                    look *= touchSensitivity;
+                }
+                else if (Application.isMobilePlatform)
                     ReadTouch(out move, out look, out interact);
                 else
                     ReadDesktop(out move, out look, out interact);
             }
 
-            bool jump = Application.isFocused && Cursor.lockState == CursorLockMode.Locked &&
+            jump |= Application.isFocused && Cursor.lockState == CursorLockMode.Locked &&
                 jumpAction?.action?.WasPressedThisFrame() == true;
             Step(move, look, Time.deltaTime, jump);
             if (interact) TryInteract();
@@ -148,7 +166,7 @@ namespace BapakSimulator
 
         public bool BeginDriving(VehicleDrive vehicle, Transform seat)
         {
-            if (ActiveVehicle != null || IsPaused || gameplayInputBlocked || !isActiveAndEnabled) return false;
+            if (ActiveVehicle != null || IsPaused || sequenceInputBlocked || gameplayInputBlocked || !isActiveAndEnabled) return false;
 
             ActiveVehicle = vehicle;
             SetGameplayInputBlocked(true);
@@ -194,6 +212,7 @@ namespace BapakSimulator
             ActiveVehicle = null;
             chaseView = false;
             SetGameplayInputBlocked(false);
+            if (UsesTouchControls) Cursor.lockState = CursorLockMode.None;
         }
 
         internal void SetPaused(bool paused)
@@ -259,7 +278,11 @@ namespace BapakSimulator
         public void SetWorldInteractionBlocked(bool blocked)
         {
             worldInteractionBlocked = blocked;
-            if (!blocked) resumeInteractionFrame = Time.frameCount + 1;
+            if (blocked) return;
+
+            resumeInteractionFrame = Time.frameCount + 1;
+            if (UsesTouchControls && ActiveVehicle == null && !IsPaused)
+                Cursor.lockState = CursorLockMode.None;
         }
 
         private void ReadDesktop(out Vector2 move, out Vector2 look, out bool interact)
@@ -352,7 +375,7 @@ namespace BapakSimulator
 
         public void Step(Vector2 move, Vector2 look, float deltaTime, bool jump = false)
         {
-            if (IsPaused || gameplayInputBlocked || deltaTime <= 0 || !body.enabled) return;
+            if (IsPaused || sequenceInputBlocked || gameplayInputBlocked || deltaTime <= 0 || !body.enabled) return;
             if (transform.position.y < -5f)
             {
                 ResetPosition();
@@ -377,7 +400,7 @@ namespace BapakSimulator
         {
             get
             {
-                if (ActiveVehicle != null || IsPaused || gameplayInputBlocked || worldInteractionBlocked || Time.frameCount < resumeInteractionFrame) return null;
+                if (ActiveVehicle != null || IsPaused || sequenceInputBlocked || gameplayInputBlocked || worldInteractionBlocked || Time.frameCount < resumeInteractionFrame) return null;
                 var cameraTransform = view.transform;
                 int count;
                 do

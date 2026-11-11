@@ -56,6 +56,7 @@ namespace BapakSimulator
         private enum Caller { None, School, Factory }
 
         private bool open;
+        internal bool IsOpen => open;
         private bool openedForCall;
         private Caller currentCaller;
         private GameObject previousSelection;
@@ -333,7 +334,29 @@ namespace BapakSimulator
 
         private void RefreshNotes()
         {
-            var text = new StringBuilder(household.Objective);
+            var text = new StringBuilder();
+            var provider = household.SchoolPickupProvider;
+            string pickupOwner = provider switch
+            {
+                PickupProvider.Ibu => "Ibu",
+                PickupProvider.PaidTransport => "Pak Sopir",
+                PickupProvider.Missed => "—",
+                _ => "Bapak"
+            };
+            string pickupState = household.SchoolPickupMissed ? "Terlewat"
+                : household.IsSchoolPickupResolved ? "Selesai"
+                : provider != PickupProvider.Bapak || household.ManualPickupPromised ? "Dikonfirmasi"
+                : "Belum diatur";
+
+            AppendResponsibility(text, "Jemput Anak", pickupState,
+                $"{FormatTime(household.PickupStartMinute)}–{FormatTime(household.PickupDeadline)}", pickupOwner,
+                provider == PickupProvider.PaidTransport ? household.TransportFee : 0);
+            text.Append("\n\n");
+            AppendResponsibility(text, finances.BillName,
+                finances.BillPaid ? "Lunas" : finances.BillOverdue ? "Terlambat" : "Belum bayar",
+                $"Hari {finances.BillDueDay}", "Bapak", finances.BillAmount);
+
+            text.Append("\n\n<b>Perjalanan keluarga</b>");
             foreach (var commute in commutes)
             {
                 string mark = commute.State switch
@@ -357,9 +380,6 @@ namespace BapakSimulator
                 text.Append("\n\n").Append(factory.CallerName).Append(" • ").Append(status);
             }
 
-            if (!finances.BillPaid)
-                text.Append("\n\n").Append(finances.BillName).Append(" • hari ").Append(finances.BillDueDay)
-                    .Append(finances.BillOverdue ? " • Terlambat" : "");
             if (finances.LoanOutstanding > 0)
                 text.Append("\nPinjol Rp").Append(finances.LoanOutstanding.ToString("N0")).Append(" • hari ")
                     .Append(finances.LoanDueDay).Append(finances.LoanOverdue ? " • Terlambat" : "");
@@ -369,6 +389,14 @@ namespace BapakSimulator
 
             string value = text.ToString();
             if (notes.text != value) notes.text = value;
+        }
+
+        private static void AppendResponsibility(StringBuilder text, string title, string state,
+            string due, string owner, int cost)
+        {
+            text.Append("<b>").Append(title).Append("</b>  •  ").Append(state)
+                .Append('\n').Append(due).Append("  •  ").Append(owner);
+            text.Append("  •  Rp").Append(cost.ToString("N0"));
         }
 
         private static string FormatTime(int minute) => $"{minute / 60:00}:{minute % 60:00}";

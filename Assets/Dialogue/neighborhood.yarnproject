@@ -1,5 +1,5 @@
 {
   "projectFileVersion": 3,
-  "sourceFiles": ["*.yarn"],
+  "sourceFiles": ["anak-pickup.yarn", "kampung-residents.yarn", "prologue.yarn"],
   "baseLanguage": "id"
 }

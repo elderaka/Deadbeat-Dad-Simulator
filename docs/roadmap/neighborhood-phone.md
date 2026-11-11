@@ -136,7 +136,7 @@ The **Bapak Pengangguran Simulator** title screen opens on a plain New Game, Con
 
 ## Bedroom start and village sky
 
-Kampung starts Bapak on the bed in Unit 1's second room. A new game begins at 08:00. Continue loads the last checkpoint and starts the next morning. The old Rumah interaction was replaced by the bed, which ends the day and exposes the next-morning action. Mouse click, Space, and Enter advance Yarn lines while choices and pause retain their own controls.
+Kampung starts Bapak on the bed in Unit 1's second room. A new game starts the clock at 06:00 after the prologue. Continue loads the last checkpoint and starts the next morning. The old Rumah interaction was replaced by the bed, which ends the day and exposes the next-morning action. Tap or click during a Yarn line to finish revealing it, then tap or click again to advance. Space and Enter use the same behavior. Jeda opens the pause menu, and dialogue choices have their own buttons. School and work schedules keep their existing times.
 
 Kampung has its own day schedule asset and runs until 22:00. The sky rig reads the household clock and drives the sun, moon, sky, ambient light, and haze. Daylight warms near dusk, and cool moonlight takes over after sunset. Play Mode verified the bed spawn, automatic startup, three dialogue inputs, dusk and moonrise, the bed checkpoint, and day-two Continue.
 
@@ -161,3 +161,25 @@ The bottom-left card shows the clock, day, wallet, bag, and one objective or bri
 Use the bed to end the day and write a checkpoint. Continue loads the last checkpoint and starts the next morning. Checkpoint v7 records day recaps, cash, relationships, inventory, resident flags, completed trips, recurring transport, bills, loans, difficulty, inherited history, and Judol state. Per-vehicle entries record unlock state, tank contents, odometer, fuel used, fuel purchased, and spending on fuel. Mid-day progress returns to the last saved day boundary.
 
 The Play Mode checks on this page were run against the local Unity prototype. Android device testing, longer-run balance, and the weekly scenario remain separate milestones.
+
+
+## Catatan responsibility board
+
+Catatan shows school pickup and the electricity bill using the same row format. Each row shows its deadline or window, who is responsible, the cost, and the current state. Pickup reads the household agreement and outcome, including manual promises and paid coverage. The bill reads its amount, due day, and payment state from Household Finances. Confirm pickup through the existing conversations and pay the bill in Keuangan. The family travel checklist and reminders remain below the two rows.
+
+Unity Play Mode checks exercised the unpaid and paid bill, an overdue bill, a manual pickup promise, and paid pickup completing at the deadline. A staged missed pickup verified its display. Scheduled bill payment, groceries, and the weekly recap are future wireframe steps.
+
+## New Game prologue
+
+New Game opens on the bed, cuts to Ibu and Anak in the courtyard, and returns to Bapak as Day 1 begins at 06:00. Ibu has a placeholder gesture and both conversations use the shared Yarn runner. Continue resumes from the checkpoint as before.
+
+Edit the ordered steps on **New game prologue** in the Kampung scene. Each step can select a camera pose, cut or ease to it, play an Animation clip, hold for a duration, and wait for a Yarn node to finish. The sequence restores the gameplay camera, HUD, and input on completion. Another scene event can call `SceneSequence.Play` from a UnityEvent. The startup caller controls when the day starts.
+
+Play Mode verified the New Game entry, camera and gesture playback, pause, both Yarn conversations, and the handoff to the bed spawn with gameplay restored.
+
+
+## Windows touch controls
+
+In Kampung, open Jeda and enable Kontrol sentuh. Drag from anywhere on the left half to move and drag on the right half to look. Lompat, Interaksi, Ponsel, and Jeda are buttons. The walking controls yield to dialogue and the phone, and Tutup ponsel returns to the world. Toggle the option in Jeda to return to desktop controls.
+
+Unity Play Mode checked independent simulated pointers, action buttons, Ibu dialogue, and the Catatan round trip. Simultaneous movement and look through a phone remote client depend on the pointer input Windows receives. Driving and fishing use their existing controls.

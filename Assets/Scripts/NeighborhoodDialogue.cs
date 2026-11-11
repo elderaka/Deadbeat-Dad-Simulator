@@ -39,9 +39,9 @@ namespace BapakSimulator
             if (runner != null) runner.RemoveCommandHandler("npc_action");
         }
 
-        internal bool TryStart(string node, Action<VariableStorageBehaviour> prepare, Func<string, bool> action, Action onClosed = null)
+        internal bool TryStart(string node, Action<VariableStorageBehaviour> prepare, Func<string, bool> action, Action onClosed = null, bool sequence = false)
         {
-            if (!isActiveAndEnabled || active || !player.CanOpenDialogue || runner.IsDialogueRunning ||
+            if (!isActiveAndEnabled || active || !(sequence ? player.CanOpenSequenceDialogue : player.CanOpenDialogue) || runner.IsDialogueRunning ||
                 string.IsNullOrWhiteSpace(node) || !runner.YarnProject.NodeNames.Contains(node))
                 return false;
 
@@ -49,7 +49,12 @@ namespace BapakSimulator
             return true;
         }
 
-        private async YarnTask Run(string node, Action<VariableStorageBehaviour> prepare, Func<string, bool> action, Action onClosed = null)
+        internal bool TryStartSequenceLine(string node, Action onClosed) =>
+            TryStart(node, null, null, onClosed, sequence: true);
+
+        internal void StopSequenceLine() => runner.Stop().Forget();
+
+        private async YarnTask Run(string node, Action<VariableStorageBehaviour> prepare, Func<string, bool> action, Action onClosed)
         {
             active = true;
             if (dialogueRaycaster != null) dialogueRaycaster.enabled = true;
@@ -64,7 +69,7 @@ namespace BapakSimulator
             try
             {
                 runner.VariableStorage.SetValue("$action_ok", false);
-                prepare(runner.VariableStorage);
+                prepare?.Invoke(runner.VariableStorage);
                 await runner.StartDialogue(node);
                 await runner.DialogueTask;
             }

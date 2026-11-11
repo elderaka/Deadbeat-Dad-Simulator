@@ -67,11 +67,12 @@ namespace BapakSimulator
             }
 
             string target = player.FocusedInteractable?.Prompt;
-            if (shownPrompt == target) return;
+            string binding = player.UsesTouchControls ? "Interaksi" : Application.isMobilePlatform ? "Ketuk kanan" : "E";
+            string nextPrompt = string.IsNullOrEmpty(target) ? "·" : $"·\n{binding}  {target}";
+            if (shownPrompt == nextPrompt) return;
 
-            shownPrompt = target;
-            string binding = Application.isMobilePlatform ? "Ketuk kanan" : "E";
-            prompt.text = string.IsNullOrEmpty(target) ? "·" : $"·\n{binding}  {target}";
+            shownPrompt = nextPrompt;
+            prompt.text = nextPrompt;
         }
 
         private static string FormatRecap(DayRecap recap, DayRecap? previous, string restLocation)

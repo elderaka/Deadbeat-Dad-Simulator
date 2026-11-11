@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b523adf1975d5fa498d1a8ff434b389f, type: 3}
   m_Name: kampung-day-schedule
   m_EditorClassIdentifier: Assembly-CSharp::BapakSimulator.DaySchedule
-  startMinute: 480
+  startMinute: 360
   pickupStartMinute: 480
   pickupDeadline: 780
   endMinute: 1320

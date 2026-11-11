@@ -16,6 +16,7 @@ namespace BapakSimulator
         private float previousTimeScale;
         private CursorLockMode previousCursorLock;
         private bool previousCursorVisibility;
+        private bool previousTouchMode;
         private GameObject previousSelection;
 
         private void Awake()
@@ -52,8 +53,10 @@ namespace BapakSimulator
             else Open();
         }
 
-        private void Open()
+        public void Open()
         {
+            if (!isActiveAndEnabled || player.IsPaused) return;
+            previousTouchMode = player.UsesTouchControls;
             previousTimeScale = Time.timeScale;
             previousCursorLock = Cursor.lockState;
             previousCursorVisibility = Cursor.visible;
@@ -77,6 +80,13 @@ namespace BapakSimulator
                 eventSystem.SetSelectedGameObject(previousSelection != null && previousSelection.activeInHierarchy
                     ? previousSelection : null);
             player.SetPaused(false);
+            if (player.UsesTouchControls && player.CanOpenDialogue)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+            else if (previousTouchMode && player.CanOpenDialogue && !Application.isMobilePlatform)
+                Cursor.lockState = CursorLockMode.Locked;
         }
     }
 }
